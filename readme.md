@@ -90,6 +90,10 @@ Add the following `golang` statements within your `<main>` tag in your `.gxml` f
 
 ### Authenticating with LDAP
 
+#### Import LDAP `pkg`
+
+	<import src="github.com/jtblin/go-ldap-client" />
+
 #### Connect to server
 Create a connection to your LDAP server. Update the fields as needed.
 
