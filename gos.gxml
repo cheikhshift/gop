@@ -12,9 +12,9 @@
 	<!-- We going to make the goPkg Mongo Db Driver available to our application -->
 	<!-- Using <import/> within the <go/> tag is similar to using the import call within a .go file -->
 	<!-- To be less dramating, GoS will skip packages that it has already imported -->
-	<import src="github.com/cheikhshift/db/gos.gxml"/>
 	<!-- Go File output name -->
-	<import src="github.com/jtblin/go-ldap-client"/>
+    <var type="">Sample = ""</var>
+    <import src="encoding/gob" />
 	<import src="github.com/cheikhshift/gop"/>
 	<output>server_out.go</output>
 	<!-- exported session fields available to Session -->
@@ -23,6 +23,9 @@
 		
 
 	</main>
+	<init>
+		gob.Register(&gop.User{})
+	</init>
 	<!-- Declare global variables -->
 	<!-- Contains interfaces and structs
 	 that will be used by the GoS application -->
@@ -31,12 +34,7 @@
 
 
 		<!-- Required for Gos To compile \|/-->
-	    <struct name="UserSpace">
-				/* Property Type */
-		</struct>
-		<object name="UserSpaceInterface" struct="UserSpace">
-		   
-		</object>
+	
 	</header>
 	<methods>
 		<!-- Vars are defined as usual except within the var attribute for example :  -->
@@ -80,54 +78,19 @@
       			user,err := gop.GetUser(session)
 
       			if err != nil {
-      				http.Redirect(w,r,UPage,302)
+      				http.Redirect(w,r,gop.UPage,302)
       				return true
       			}
 
       			if !gop.Contains(user.Scopes, r.URL.Path) {
-      				http.Redirect(w,r,UPage,302)
+      				http.Redirect(w,r,gop.UPage,302)
       				return true
       			}
       			//procceed
       		}
       </end>
 
-   <!--   <end path="/login" type="POST" >
-      	
-      	succ, err := gop.Login(r.FormValue("username") ,
-      		r.FormValue("password") ,
-      		session )
-
-      	if err != nil {
-      		response = err.Error()
-      	} else {
-      			//redirect or return user
-      			user := gop.GetUser(session)
-      			//save in case you're redirecting
-      			session.Save(r,w)
-
-      	}
-
-      </end>
-
-   <end path="/join" type="POST" >
-      	
-      succ, err := gop.Join(r.FormValue("username") ,
-      		r.FormValue("password") , 
-      		r.FormValue("email") ,
-      		session )
-
-      	if err != nil {
-      		response = err.Error()
-      	} else {
-      			//redirect or return user
-      			user := gop.GetUser(session)
-      			//save in case you're redirecting
-      			session.Save(r,w)
-
-      	}
-
-   </end> -->
+  
 
 	</endpoints>
 </gos>

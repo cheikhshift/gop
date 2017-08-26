@@ -1,4 +1,4 @@
-package main
+package gop
 
 
 import (
@@ -58,7 +58,7 @@ func (u User) Push (ses *sessions.Session) error {
 	ses.Values["passport"] = u
 	if u.LDAP {
 		return nil
-	} else if {
+	} else {
 		return DB.Save(&u)
 	}
 }
@@ -68,7 +68,6 @@ func New(u User) User {
 }
 
 func Contains (arr []string, lookup string) bool {
-
 	for _, v := range arr {
 		if strings.Contains(lookup, v) {
 			return true
@@ -77,11 +76,11 @@ func Contains (arr []string, lookup string) bool {
 	return false
 }
 
-func  GetUser(ses  *sessions.Session) (User, error) {
-	if _, ok := ses.Values["password"]; ok  {
-		return ses.Values["password"].(User), nil
+func  GetUser(ses  *sessions.Session) (*User, error) {
+	if _, ok := ses.Values["passport"]; ok  {
+		return ses.Values["passport"].(*User), nil
 	} else {
-		return User{}, errors.New("No session found.")
+		return &User{}, errors.New("No session found.")
 	}
 }
 
@@ -107,10 +106,11 @@ func Join(args ...interface{}) (bool, error) {
 	if _, ok := ses.Values["passport"]; !ok  {
 		//delete(session.Values, "passport")
 		user  := User{Username : args[0].(string)}
-		user.SetPassword(args[1].(string))
+		user.Pw = sha256.Sum256([]byte( args[1].(string) ))
 		user.Email = email
-		user = DB.New(&user).(User)
-		err := DB.Save(&user)
+		
+		usr := DB.New(&user).(*User)
+		err := DB.Save(usr)
 
 		if err != nil {
 			return false, err
@@ -137,7 +137,7 @@ func Login(u string, pw string, ses  *sessions.Session) (bool, error) {
 			return false, errors.New("User not found!")
 		}
 
-		ses.Values["passport"] = user
+		ses.Values["passport"] = &user
 
 		return true, nil
 	} else {
