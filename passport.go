@@ -58,7 +58,7 @@ func (u User) Push (ses *sessions.Session) error {
 	ses.Values["passport"] = u
 	if u.LDAP {
 		return nil
-	} else if {
+	} else {
 		return DB.Save(&u)
 	}
 }
