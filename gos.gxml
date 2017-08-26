@@ -13,7 +13,6 @@
 	<!-- Using <import/> within the <go/> tag is similar to using the import call within a .go file -->
 	<!-- To be less dramating, GoS will skip packages that it has already imported -->
 	<!-- Go File output name -->
-    <var type="">Sample = ""</var>
     <import src="encoding/gob" />
 	<import src="github.com/cheikhshift/gop"/>
 	<output>server_out.go</output>
