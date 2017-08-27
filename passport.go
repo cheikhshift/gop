@@ -115,7 +115,7 @@ func Join(args ...interface{}) (bool, error) {
 		if err != nil {
 			return false, err
 		} else {
-			ses.Values["passport"] = user
+			ses.Values["passport"] = usr
 		}
 
 		return true, nil
@@ -164,7 +164,7 @@ func  LoginLDAP(u string, pw string, ses  *sessions.Session) (bool, error) {
 	Suser.Groups = groups
 	Suser.LDAP  = true
 
-	ses.Values["passport"] = Suser
+	ses.Values["passport"] = &Suser
 
 		return true, nil
 	} else {

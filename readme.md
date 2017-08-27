@@ -31,12 +31,12 @@ Add the following `golang` statements within your `<main>` tag in your `.gxml` f
 	gop.Connect("host_mongo_uri", "database_name")
 	defer gop.DB.Close()
 
-#### Perform Authentication within `<end>` tag
+#### Perform a login within `<end>` tag
   The following `<end>` tag will attempt to login a user :  If Authentication fails a text string as to why is returned.
 
     <end path="/login" type="POST" >
       	
-      	success , err := gop.Login(r.FormValue("username") ,
+      	succ, err := gop.Login(r.FormValue("username") ,
       		r.FormValue("password") ,
       		session )
 
@@ -44,7 +44,7 @@ Add the following `golang` statements within your `<main>` tag in your `.gxml` f
       		response = err.Error()
       	} else {
       			//redirect or return user
-      			user,_ := gop.GetUser(session)
+      			user := gop.GetUser(session)
       			//save in case you're redirecting
       			session.Save(r,w)
 
@@ -57,7 +57,7 @@ Add the following `golang` statements within your `<main>` tag in your `.gxml` f
 
 	   <end path="/join" type="POST" >
 	      	
-	      success, err := gop.Join(r.FormValue("username") ,
+	      succ, err := gop.Join(r.FormValue("username") ,
 	      		r.FormValue("password") , 
 	      		r.FormValue("email") ,
 	      		session )
@@ -66,7 +66,7 @@ Add the following `golang` statements within your `<main>` tag in your `.gxml` f
 	      		response = err.Error()
 	      	} else {
 	      			//redirect or return user
-	      			user,err := gop.GetUser(session)
+	      			user := gop.GetUser(session)
 	      			//save in case you're redirecting
 	      			session.Save(r,w)
 	
@@ -90,10 +90,6 @@ Add the following `golang` statements within your `<main>` tag in your `.gxml` f
 
 ### Authenticating with LDAP
 
-#### Import LDAP `pkg`
-
-	<import src="github.com/jtblin/go-ldap-client" />
-
 #### Connect to server
 Create a connection to your LDAP server. Update the fields as needed.
 
@@ -116,7 +112,7 @@ Create a connection to your LDAP server. Update the fields as needed.
 
     <end path="/login" type="POST" >
       	
-      	success, err := gop.LoginLDAP(r.FormValue("username") ,
+      	succ, err := gop.LoginLDAP(r.FormValue("username") ,
       		r.FormValue("password") ,
       		session )
 
@@ -124,7 +120,7 @@ Create a connection to your LDAP server. Update the fields as needed.
       		response = err.Error()
       	} else {
       			//redirect or return user
-      			user,err := gop.GetUser(session)
+      			user := gop.GetUser(session)
       			//save in case you're redirecting
       			session.Save(r,w)
 
