@@ -44,7 +44,7 @@ Add the following `golang` statements within your `<main>` tag in your `.gxml` f
       		response = err.Error()
       	} else {
       			//redirect or return user
-      			user := gop.GetUser(session)
+      			user,err := gop.GetUser(session)
       			//save in case you're redirecting
       			session.Save(r,w)
 
@@ -66,7 +66,7 @@ Add the following `golang` statements within your `<main>` tag in your `.gxml` f
 	      		response = err.Error()
 	      	} else {
 	      			//redirect or return user
-	      			user := gop.GetUser(session)
+	      			user,err := gop.GetUser(session)
 	      			//save in case you're redirecting
 	      			session.Save(r,w)
 	
@@ -120,7 +120,7 @@ Create a connection to your LDAP server. Update the fields as needed.
       		response = err.Error()
       	} else {
       			//redirect or return user
-      			user := gop.GetUser(session)
+      			user,err := gop.GetUser(session)
       			//save in case you're redirecting
       			session.Save(r,w)
 
