@@ -150,15 +150,15 @@ Use the package function `gop.AddAuthZone(path string)` to protect a request pat
 	gop.AddAuthZone("protect-resource")
 
 ### Give user path permission :
-Use the function ` (u User)AddZone(path string)` to give user new access to a specified path. 
+Use the function ` (u *User)AddZone(path string)` to give user new access to a specified path. 
 
-Use the function ` (u User)RemoveZone(path string)` to revoke user access from a specified path. 
+Use the function ` (u *User)RemoveZone(path string)` to revoke user access from a specified path. 
 
 
 ### Update user
 
 Use the `Push` function to update your user's session and database value.
-`(u User) Push (ses *sessions.Session) error `
+`(u *User) Push (ses *sessions.Session) error `
 
 ### Set Unauthorized page redirect
 
