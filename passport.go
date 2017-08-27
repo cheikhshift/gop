@@ -50,16 +50,16 @@ func  AddAuthZone (path string){
 	}
 }
 
-func (u User) SetPassword(pw string) {
+func (u *User) SetPassword(pw string) {
 	u.Pw = sha256.Sum256([]byte(pw))
 }
 
-func (u User) Push (ses *sessions.Session) error {
+func (u *User) Push (ses *sessions.Session) error {
 	ses.Values["passport"] = u
 	if u.LDAP {
 		return nil
 	} else {
-		return DB.Save(&u)
+		return DB.Save(u)
 	}
 }
 
