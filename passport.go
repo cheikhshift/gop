@@ -186,7 +186,7 @@ func  RemoveAuthZone (path string){
 	Zones = ns
 }
 
-func (u User) AddZone(path string){
+func (u *User) AddZone(path string){
 	if u.Scopes == nil {
 		u.Scopes = [] string{}
 	}
@@ -195,7 +195,7 @@ func (u User) AddZone(path string){
 	}
 }
 
-func (u User) RemoveZone(path string){
+func (u *User) RemoveZone(path string){
 	if u.Scopes == nil {
 		u.Scopes = [] string{}
 	}
