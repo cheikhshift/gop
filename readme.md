@@ -160,6 +160,13 @@ Use the function ` (u *User)RemoveZone(path string)` to revoke user access from 
 Use the `Push` function to update your user's session and database value.
 `(u *User) Push (ses *sessions.Session) error `
 
+### Log user out.
+Use the `gop` pkg func : `func Logout(ses  *sessions.Session) (bool, error)` to log a user out. Example of the call within `<end>` tag :
+
+	<end path="/sample/path" type="GET">
+		gop.Logout(session)
+	</end>
+
 ### Set Unauthorized page redirect
 
 Use the `gop.SetUnAuthPage(path string)` to set the redirect path on permission error.
