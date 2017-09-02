@@ -83,13 +83,17 @@ Add the following `golang` statements within your `<main>` tag in your `.gxml` f
 		Username string `valid:"unique,required"`
 		Pw [32]byte
 		Email string `valid:"email,unique,required"`
-	    Created time.Time //timestamp local format
-	    Scopes []string
-	    Attr map[string] string
+	 	Created time.Time //timestamp local format
+	    	Scopes []string
+	    	Attr map[string] string
 	}
 
 ### Authenticating with LDAP
 
+#### Get LDAP go `pkg`
+
+	go get github.com/jtblin/go-ldap-client
+	
 #### Connect to server
 Create a connection to your LDAP server. Update the fields as needed.
 
@@ -136,11 +140,11 @@ Create a connection to your LDAP server. Update the fields as needed.
 		Username string `valid:"unique,required"`
 		Pw [32]byte
 		Email string `valid:"email,unique,required"`
-	    Created time.Time //timestamp local format
-	    Scopes []string
-	    Groups []string
-	    Props db.O
-	    Attr map[string] string
+	    	Created time.Time //timestamp local format
+	   	Scopes []string
+	    	Groups []string
+	    	Props db.O
+	    	Attr map[string] string
 	}
 
 
