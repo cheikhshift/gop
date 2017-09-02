@@ -104,7 +104,7 @@ Create a connection to your LDAP server. Update the fields as needed.
 		GroupFilter: "(memberUid=%s)",
 		Attributes:   []string{"givenName", "sn", "mail", "uid"},
 		})
-		defer LDAPClient.Close()
+		defer gop.LDAPClient.Close()
 
 #### Authentication with LDAP
 
