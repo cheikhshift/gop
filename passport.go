@@ -69,7 +69,7 @@ func New(u User) User {
 
 func Contains (arr []string, lookup string) bool {
 	for _, v := range arr {
-		if strings.Contains(lookup, v) {
+		if rIndex :=  strings.Index(lookup, v); (rIndex == 0 ) {
 			return true
 		}
 	}
