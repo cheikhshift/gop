@@ -14,8 +14,10 @@
 	<!-- To be less dramating, GoS will skip packages that it has already imported -->
 	<!-- Go File output name -->
     <import src="encoding/gob" />
+    <import src="github.com/jtblin/go-ldap-client" />
 	<import src="github.com/cheikhshift/gop"/>
 	<output>server_out.go</output>
+	<var type="*ldap.LDAPClient">LocalLDAP</var>
 	<!-- exported session fields available to Session -->
 	<main>
 	/* GOLANG SCOPE */
