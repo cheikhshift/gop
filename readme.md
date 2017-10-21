@@ -1,6 +1,6 @@
 # Go-Passport
 
-Go-Server authentication package. This package supports simple service security.
+GopherSauce authentication package. This package supports simple service security.
 
 ## Requirements
 
