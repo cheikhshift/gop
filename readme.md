@@ -5,7 +5,7 @@ Go-Server authentication package. This package supports simple service security.
 ## Requirements
 
 - Running Go lang workspace.
-- [Go Server](https://github.com/cheikhshift/Gopher-Sauce/wiki)
+- [GopherSauce](https://gophersauce.com)
 
 
 ## Index
