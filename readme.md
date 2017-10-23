@@ -5,7 +5,7 @@ GopherSauce authentication package. This package supports simple service securit
 ## Requirements
 
 - Running Go lang workspace.
-- [GopherSauce](https://gophersauce.com)
+- [GopherSauce](http://gophersauce.com)
 
 
 ## Index
