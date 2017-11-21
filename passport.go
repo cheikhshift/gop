@@ -67,7 +67,7 @@ func New(u User) User {
 	return DB.New(&u).(User)
 }
 
-func Contains (arr []string, lookup string) bool {
+func Contains(arr []string, lookup string) bool {
 	for _, v := range arr {
 		if rIndex :=  strings.Index(lookup, v); (rIndex == 0 ) {
 			return true
